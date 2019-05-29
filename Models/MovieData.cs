@@ -29,7 +29,7 @@ namespace MovieBlend.Models
         public string User_name { get; set; }
 
         
-        
+    
     }
     public enum Catagory{
         Movie,
