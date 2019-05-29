@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "New Post";
+}
+@model MovieData
+
+<div class="text-center">
+    <div class="form-group"> <button type="submit" class="btn btn-outline-primary"> <h3 class="display-4">Select Catagory</h3> </button> </div>
+    <hr />
+    <div class="from-group">
+        <input style="font-size:30px" type="button" value="Movie" class="btn btn-outline-dark" onclick="location.href='@Url.Action("Add_entry_movie","Post")'" />
+    </div>
+    <br>
+    <div class="from-group">
+        <input style="font-size:30px" type="button" value="TV" class=" btn btn-outline-danger" onclick="location.href='@Url.Action("Add_entry_TV","Post")'" />
+    </div>
+</div>

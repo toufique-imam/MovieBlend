@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "New Post";
+}
+@model MovieData
+
+<h2>Create new blog post</h2>
+
+<div class="align-self-md-auto">
+    @await Html.PartialAsync("post_entry_partial",new MovieData())
+</div>

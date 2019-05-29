@@ -1,0 +1,100 @@
+﻿@model MovieData
+@{
+    ViewData["Title"] = Model.Title;
+}
+@using Humanizer
+@using StmlParsing
+<style>
+    h1 {
+        color: snow;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    h3 {
+        text-align: center;
+        color: snow;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+    .poster_name {
+        text-align: left;
+        color: darkred;
+        text-decoration:underline
+    }
+
+    section {
+        width: 100%;
+        float: left;
+    }
+
+    .banner-section {
+        background-image: url("https://static.pexels.com/photos/373912/pexels-photo-373912.jpeg");
+        background-size: cover;
+        height: 380px;
+        left: 0;
+        position: absolute;
+        top: inherit;
+        background-position: 0;
+    }
+
+    .post-title-block {
+        padding: 100px 0;
+    }
+
+        .post-title-block h1 {
+            color: #fff;
+            font-size: 85px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .post-title-block li {
+            font-size: 20px;
+            color: #fff;
+        }
+
+    .image-block {
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .footer-link {
+        float: left;
+        width: 100%;
+        background: #222222;
+        text-align: center;
+        padding: 30px;
+    }
+
+        .footer-link a {
+            color: #A9FD00;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+    .div-post {
+        margin-top: 45px;
+    }
+</style>
+<div>
+    <section class="banner-section">
+       
+    </section>
+    <section class="post-content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+                    <h1 class="text-center">@Model.Title</h1>
+                    <h3> @Model.Release | @Model.Language | @Model.Genre</h3>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 div-post">
+                    <p>
+                        <h6 class="poster_name">Posted By @Model.User_name</h6>
+                        <h7 class="poster_name">Posted @Model.Postedate.Humanize()</h7>
+                        @Html.Raw(@StmlParser.Parse(Model.Description))
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
