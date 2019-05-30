@@ -2,9 +2,21 @@
 @{
     ViewData["Title"] = Model.Title;
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 @using Humanizer
 @using StmlParsing
 <style>
+    .user_name {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .comments-list .media {
+        border-bottom: 1px dotted #ccc;
+    }
+
     h1 {
         color: snow;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -15,10 +27,11 @@
         color: snow;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
+
     .poster_name {
         text-align: left;
         color: darkred;
-        text-decoration:underline
+        text-decoration: underline
     }
 
     section {
@@ -76,9 +89,8 @@
         margin-top: 45px;
     }
 </style>
-<div>
-    <section class="banner-section">
-    </section>
+<div id="app">
+    <section class="banner-section"></section>
     <section class="post-content-section">
         <div class="container">
             <div class="row">
@@ -90,13 +102,82 @@
                     <p>
                         <h6 class="poster_name">Posted By @Model.User_name</h6>
                         <h7 class="poster_name">Posted @Model.Postedate.Humanize()</h7>
-                        @Html.Raw(@StmlParser.Parse(Model.Description))
+                        <br />@Html.Raw(@StmlParser.Parse(Model.Description))
                     </p>
                 </div>
             </div>
         </div>
     </section>
-    <div class="panel-footer add-item-form">
-          
+    <div class="container">
+        <br />
+        <p>You Comment</p>
+        <form onsubmit="return false;">
+            <input type="text" id="Name" placeholder="Your Name" v-model="comment.Name" class="form-control" />
+            <textarea rows="3" placeholder="Your Comment" id="Body" v-model="comment.Body" class="form-control"></textarea>
+            <button class="btn btn-success" v-on:click="submit_comment()">save</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="page-header">
+                <h3><small class="pull-right">{{comments.length}}</small>Comments</h3>
+            </div>
+            <div class="comments-list">
+                <div class="media-body">
+                    <h4 class="media-heading user_name">{{com.name}}</h4>
+                    {{com.body}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    var pusher = new Pusher('7ba0ddfcfbfe565ee8ee', {
+        cluster: 'ap2'
+    });
+    var my_channel = pusher.subscribe('asp_channel');
+    var app = new Vue({
+        el: '#app',
+        data: {
+            comments: [],
+            comment: {
+                Name: '',
+                Body: '',
+                BlogPostID: @Model.Id,
+            }
+        },
+        created: function() {
+            this.get_comments();
+            this.listen();
+        },
+        methods: {
+
+            get_comments: function() {
+                axios.get('@Url.Action("Comments", "PostDetail", new { id = @Model.Id }, protocol: Request.Scheme)')
+                    .then((response) => {
+
+                        this.comments = response.data;
+
+                    });
+
+            },
+            listen: function() {
+                my_channel.bind("asp_event", (data) => {
+                    if (data.BlogPostID == this.comment.BlogPostID) {
+                        this.comments.push(data);
+                    }
+
+                })
+            },
+            submit_comment: function() {
+                axios.post('@Url.Action("AddComment", "PostDetail", new {}, protocol: Request.Scheme)', this.comment)
+                    .then((response) => {
+                        this.comment.Name = '';
+                        this.comment.Body = '';
+                        alert("Comment Submitted");
+
+                    });
+            }
+        }
+    });
+</script>
