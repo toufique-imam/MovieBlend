@@ -174,11 +174,11 @@ PublishScripts/
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
-
+#custom
+password/
 # Microsoft Azure Emulator
 ecf/
 rcf/
-Models/password.cs
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/
