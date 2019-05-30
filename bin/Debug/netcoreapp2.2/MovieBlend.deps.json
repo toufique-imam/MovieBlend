@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "86f3b7bf1eac6cf655bc84d112d256c6aa59b8d5"
+    "signature": "561dd8743111a25d090139249aa7e648746cfbfc"
   },
   "compilationOptions": {
     "defines": [
@@ -31,8 +31,8 @@
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "Newtonsoft.Json": "12.0.2",
-          "StmlParser": "1.0.2",
-          "bbsharp": "1.0.0.0"
+          "PusherServer": "4.1.0",
+          "StmlParser": "1.0.2"
         },
         "runtime": {
           "MovieBlend.dll": {}
@@ -731,6 +731,20 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
+      "PusherServer/4.1.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "runtime": {
+          "lib/netStandard1.6/PusherServer.Core.dll": {
+            "assemblyVersion": "4.1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netStandard1.6/PusherServer.Core.dll": {}
+        }
+      },
       "StmlParser/1.0.2": {
         "runtime": {
           "lib/StmlParsing.dll": {
@@ -914,17 +928,6 @@
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
-        }
-      },
-      "bbsharp/1.0.0.0": {
-        "runtime": {
-          "bbsharp.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "bbsharp.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -4529,6 +4532,13 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
+    "PusherServer/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gFHMTuG5Qcpa6LW+gx8qHqOE0Fv6pkt17hMcAeVZvvLcZIjRA196cBBasBn+mnxHe+r77xgiNbTutfu5OI729w==",
+      "path": "pusherserver/4.1.0",
+      "hashPath": "pusherserver.4.1.0.nupkg.sha512"
+    },
     "StmlParser/1.0.2": {
       "type": "package",
       "serviceable": true,
@@ -4612,11 +4622,6 @@
       "sha512": "sha512-td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
-    },
-    "bbsharp/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",
