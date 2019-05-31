@@ -44,6 +44,7 @@ namespace MovieBlend
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<ITvDataService, TvdataService>();
             services.AddScoped<IMovieDataService,MoviedataService>();
+            services.AddScoped<IImageDataService,ImagedataService>();
             //services.AddScoped<ICommentDataService,CommentDataService>();
            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

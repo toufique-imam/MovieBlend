@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieBlend.Data;
 
 namespace MovieBlend.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190531064941_addphotov1")]
+    partial class addphotov1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,8 +214,6 @@ namespace MovieBlend.Data.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Catagoryx");
-
-                    b.Property<Guid>("Cover_pic_id");
 
                     b.Property<string>("Description")
                         .IsRequired();

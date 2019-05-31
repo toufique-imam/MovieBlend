@@ -18,12 +18,16 @@ namespace MovieBlend.Controllers
     [Authorize]
     public class PostController : Controller
     {
+        private static Guid imageid;
+        private static Models.Image ImageEntity=new Models.Image();
         static bool isMovie = false;
+        private readonly IImageDataService _imageDataservice;
         private readonly IMovieDataService _moviedataService;
         private readonly ITvDataService _tvdataService;
         private readonly UserManager<IdentityUser> _usermanger;
-        public PostController(IMovieDataService movieDataService,ITvDataService tvDataService,UserManager<IdentityUser>userManager)
+        public PostController(IImageDataService imageDataservice,IMovieDataService movieDataService,ITvDataService tvDataService,UserManager<IdentityUser>userManager)
         {
+            _imageDataservice=imageDataservice;
             _moviedataService = movieDataService;
             _tvdataService = tvDataService;
             _usermanger = userManager;
@@ -36,14 +40,35 @@ namespace MovieBlend.Controllers
         public IActionResult Add_entry_movie()
         {
             isMovie = true;
-            return View("post_entry");
+            return View("UploadPic");
         }
         public IActionResult Add_entry_TV()
         {
             isMovie = false;
+            return View("UploadPic");
+        }
+        [HttpPost]
+        public async Task<IActionResult> UploadImage(IList<IFormFile> files)
+        {
+            IFormFile uploadedImage = files.FirstOrDefault();
+            if (uploadedImage != null || uploadedImage.ContentType.ToLower().StartsWith("image/"))
+            {
+                MemoryStream ms = new MemoryStream();
+                uploadedImage.OpenReadStream().CopyTo(ms);
+
+                System.Drawing.Image image = System.Drawing.Image.FromStream(ms);
+                ImageEntity.Id=Guid.NewGuid();
+                ImageEntity.Name=uploadedImage.FileName;
+                ImageEntity.Data=ms.ToArray();
+                ImageEntity.Width=image.Width;
+                ImageEntity.Height=image.Height;
+                ImageEntity.ContentType=uploadedImage.ContentType;
+                imageid=ImageEntity.Id;
+                Console.WriteLine("WIAT WTAH" + imageid);
+                await _imageDataservice.AddImageDataAsync(ImageEntity);
+            }
             return View("post_entry");
         }
-        
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> AddPost(MovieData dummyData)
@@ -53,7 +78,10 @@ namespace MovieBlend.Controllers
             var currentUser = await _usermanger.GetUserAsync(User);
             if (currentUser == null) return Challenge();
             // HttpPostedFileBase file = Request.Files["ImageData"];
-            
+            if (ImageEntity.Id != imageid)
+            {
+                Console.WriteLine("WAIT WHAT?" + imageid + " " + ImageEntity.Id);
+            }
             MovieData newmovie = new MovieData()
             {
                 Postedate=DateTimeOffset.Now,
@@ -65,7 +93,7 @@ namespace MovieBlend.Controllers
                 Language = dummyData.Language,
                 PosterId = currentUser.Id,
                 User_name = currentUser.UserName,
-                    
+                Cover_pic_id=ImageEntity.Id
             };
             if (isMovie==true)
             {

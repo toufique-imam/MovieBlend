@@ -88,9 +88,17 @@
     .div-post {
         margin-top: 45px;
     }
+    img{
+        all:inherit;
+        align-content:center;
+        height:380px;
+    }
+    
 </style>
-<div id="app">
-    <section class="banner-section"></section>
+<div>
+    <section class="banner-section">
+        <img src="/PostDetail/ViewImage/@Model.Cover_pic_id"/>
+    </section>
     <section class="post-content-section">
         <div class="container">
             <div class="row">
@@ -108,5 +116,5 @@
             </div>
         </div>
     </section>
-   <div class="fb-comments" data-href="https://localhost:5001/PostDetail" data-width="" data-numposts="10"></div>
+    <div class="fb-comments" data-href="https://localhost:5001/PostDetail/@Model.Id" data-width="" data-numposts="10"></div>
 </div>

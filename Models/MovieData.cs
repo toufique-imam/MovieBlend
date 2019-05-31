@@ -27,8 +27,7 @@ namespace MovieBlend.Models
         public string Language { get; set; }
         public Catagory Catagoryx { get; set; }
         public string User_name { get; set; }
-
-        
+        public Guid Cover_pic_id{get;set;}        
     
     }
     public enum Catagory{
