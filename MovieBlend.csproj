@@ -20,14 +20,4 @@
     <PackageReference Include="StmlParser" Version="1.0.2" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Reference Include="System.Web">
-      <HintPath>E:\Downloads\Compressed\System.Web\System.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Abstractions">
-      <HintPath>E:\Downloads\Compressed\System.Web.Abstractions\System.Web.Abstractions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

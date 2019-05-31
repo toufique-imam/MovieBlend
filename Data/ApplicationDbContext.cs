@@ -14,7 +14,7 @@ namespace MovieBlend.Data
         }
         public DbSet<MovieData> Movies{get;set;}
         public DbSet<MovieData> TV{get;set;}
-        public DbSet<Comment> Comments{get;set;}
+        //public DbSet<Comment> Comments{get;set;}
         
     }
 }

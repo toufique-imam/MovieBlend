@@ -26,14 +26,15 @@ namespace MovieBlend.Controllers
     public class PostDetailController : Controller
     {
         
-        private readonly ICommentDataService _commentdataServices;
+        
+        //private readonly ICommentDataService _commentdataServices;
         private readonly IMovieDataService _movieDataService;
         private readonly ITvDataService _tvDataService;
         private static MovieData maindata;
         private readonly UserManager<IdentityUser> _usermanger;
-        public PostDetailController(IMovieDataService movieData, ITvDataService tvData, UserManager<IdentityUser> usermanager,ICommentDataService commentdataService)
+        public PostDetailController(IMovieDataService movieData, ITvDataService tvData, UserManager<IdentityUser> usermanager)
         {
-            _commentdataServices=commentdataService;
+           // _commentdataServices=commentdataService;
             _usermanger = usermanager;
             _movieDataService = movieData;
             _tvDataService = tvData;
@@ -52,37 +53,6 @@ namespace MovieBlend.Controllers
                 arr = _tvDataService.Getdatabyid(datax);
                 return View(arr);
             }
-        }
-        public ActionResult Comments(Guid id)
-        {
-            
-            var commets=_commentdataServices.GetIncompleteItemsAsync(id);
-            return Json(commets);
-            //get comments
-        }
-        [HttpPost]
-        public async Task<ActionResult> AddComment(Comment data)
-        {
-            Secret ss=new Secret();
-            var currentUser = await _usermanger.GetUserAsync(User);
-            if(currentUser==null)Challenge();
-            data.ID = Guid.NewGuid();
-            data.BlogPostID = maindata.Id;
-            data.Name =currentUser.UserName;
-            data.posteddate=DateTimeOffset.Now;
-            var res= await _commentdataServices.AddCommentDataAsync(data);
-            if (!res)
-            {
-                return BadRequest("Couldnot Post Your Entry");
-            }
-            //->//add comment and save changes
-            var options = new PusherOptions
-            {
-                Cluster = ss.cluster
-            };
-            var pusher = new Pusher(ss.app_id, ss.key, ss.secret, options);
-            ITriggerResult result = await pusher.TriggerAsync("asp_channel", "asp_event", data);
-            return Content("ok");
         }
     }
 }
