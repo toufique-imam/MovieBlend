@@ -48,6 +48,8 @@ namespace MovieBlend.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPost(MovieData dummyData)
         {
+            
+            //HttpFileCollection hfc = HttpContext.Current.Request.Files;
             var currentUser = await _usermanger.GetUserAsync(User);
             if (currentUser == null) return Challenge();
             // HttpPostedFileBase file = Request.Files["ImageData"];

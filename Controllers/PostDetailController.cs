@@ -5,26 +5,14 @@ using MovieBlend.Models;
 using MovieBlend.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
-using System.Web;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
-using MovieBlend.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
 
 namespace MovieBlend.Controllers
 {
     [Authorize]
+   
     public class PostDetailController : Controller
     {
-        
+
         
         //private readonly ICommentDataService _commentdataServices;
         private readonly IMovieDataService _movieDataService;
@@ -38,7 +26,7 @@ namespace MovieBlend.Controllers
             _movieDataService = movieData;
             _tvDataService = tvData;
         }
-        
+       
         public IActionResult Index(string data)
         {
             maindata = new MovieData();

@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[1.0.0-beta006, )"
             },
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[1.21.0, )"
+            },
             "Humanizer": {
               "target": "Package",
               "version": "[2.6.2, )"
