@@ -4,24 +4,20 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>aspnet-MovieBlend-2E001261-E25D-4A77-9170-29F16D765657</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
 
   <ItemGroup>
     <PackageReference Include="CoreCompat.System.Drawing" Version="1.0.0-beta006" />
     <PackageReference Include="Humanizer" Version="2.6.2" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="PusherServer" Version="4.1.0" />
     <PackageReference Include="StmlParser" Version="1.0.2" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Reference Include="bbsharp">
-      <HintPath>E:\Downloads\Compressed\BBsharp-master\bin\Release\bbsharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

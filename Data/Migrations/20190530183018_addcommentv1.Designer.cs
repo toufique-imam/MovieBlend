@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieBlend.Data;
 
 namespace MovieBlend.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190530183018_addcommentv1")]
+    partial class addcommentv1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,6 +184,27 @@ namespace MovieBlend.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("MovieBlend.Models.Comment", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("BlogPostID");
+
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasColumnType("ntext");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<DateTimeOffset>("posteddate");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("MovieBlend.Models.MovieData", b =>

@@ -1,39 +1,55 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using MovieBlend.Models;
-using Newtonsoft.Json;
 using MovieBlend.Services;
-using System.IO;
-using System.Drawing;
+using PusherServer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using System.Web;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
+using MovieBlend.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+
 namespace MovieBlend.Controllers
 {
-    //todo 
-    //add delete button
-    // add edit view
-    // add comment 
-
+    [Authorize]
     public class PostDetailController : Controller
     {
-       
+        
+        
+        //private readonly ICommentDataService _commentdataServices;
         private readonly IMovieDataService _movieDataService;
         private readonly ITvDataService _tvDataService;
-        
-        public PostDetailController(IMovieDataService movieData,ITvDataService tvData)
+        private static MovieData maindata;
+        private readonly UserManager<IdentityUser> _usermanger;
+        public PostDetailController(IMovieDataService movieData, ITvDataService tvData, UserManager<IdentityUser> usermanager)
         {
+           // _commentdataServices=commentdataService;
+            _usermanger = usermanager;
             _movieDataService = movieData;
             _tvDataService = tvData;
         }
+        
         public IActionResult Index(string data)
         {
-            var datax = JsonConvert.DeserializeObject<string>(data);
+            maindata = new MovieData();
+            var datax = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(data);
             var arr = _movieDataService.Getdatabyid(datax);
-            if (arr.Id.ToString() == datax) return View(arr);
+            maindata = arr;
+            if (arr.Id.ToString() == datax) return View(maindata);
             else
             {
+                maindata = arr;
                 arr = _tvDataService.Getdatabyid(datax);
                 return View(arr);
             }

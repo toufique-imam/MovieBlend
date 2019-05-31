@@ -45,5 +45,3 @@ F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Post\post_entry.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Post\post_entry_partial.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\PostDetail\Index.g.cshtml.cs
-F:\ASP.core Project\Final Project\MovieBlend\bin\Debug\netcoreapp2.2\bbsharp.dll
-F:\ASP.core Project\Final Project\MovieBlend\bin\Debug\netcoreapp2.2\bbsharp.pdb

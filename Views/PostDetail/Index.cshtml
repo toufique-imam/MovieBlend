@@ -2,9 +2,21 @@
 @{
     ViewData["Title"] = Model.Title;
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+<script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 @using Humanizer
 @using StmlParsing
 <style>
+    .user_name {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .comments-list .media {
+        border-bottom: 1px dotted #ccc;
+    }
+
     h1 {
         color: snow;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -15,10 +27,11 @@
         color: snow;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
+
     .poster_name {
         text-align: left;
         color: darkred;
-        text-decoration:underline
+        text-decoration: underline
     }
 
     section {
@@ -76,10 +89,8 @@
         margin-top: 45px;
     }
 </style>
-<div>
-    <section class="banner-section">
-       
-    </section>
+<div id="app">
+    <section class="banner-section"></section>
     <section class="post-content-section">
         <div class="container">
             <div class="row">
@@ -91,10 +102,11 @@
                     <p>
                         <h6 class="poster_name">Posted By @Model.User_name</h6>
                         <h7 class="poster_name">Posted @Model.Postedate.Humanize()</h7>
-                        @Html.Raw(@StmlParser.Parse(Model.Description))
+                        <br />@Html.Raw(@StmlParser.Parse(Model.Description))
                     </p>
                 </div>
             </div>
         </div>
     </section>
+   <div class="fb-comments" data-href="https://localhost:5001/PostDetail" data-width="" data-numposts="10"></div>
 </div>
