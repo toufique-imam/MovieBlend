@@ -9,13 +9,13 @@ namespace MovieBlend.Controllers
 {
     public class TvController : Controller
     {
-        private readonly ITvDataService _moviedataService;
-        public TvController(ITvDataService movieDataService) {
+        private readonly IPostDataService _moviedataService;
+        public TvController(IPostDataService movieDataService) {
             _moviedataService=movieDataService;
         } 
         public async Task<IActionResult> Index()
         {
-            var items=await _moviedataService.GetIncompleteItemsAsync();
+            var items=await _moviedataService.GetIncompleteItemsAsync_TV();
             var model=new MovieDataViewModel(){
                 Movies=items
             };

@@ -345,3 +345,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+obj/Debug/netcoreapp2.2/MovieBlend.assets.cache

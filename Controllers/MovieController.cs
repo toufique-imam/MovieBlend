@@ -9,13 +9,13 @@ namespace MovieBlend.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly IMovieDataService _moviedataService;
-        public MovieController(IMovieDataService movieDataService) {
+        private readonly IPostDataService _moviedataService;
+        public MovieController(IPostDataService movieDataService) {
             _moviedataService=movieDataService;
         } 
         public async Task<IActionResult> Index()
         {
-            var items=await _moviedataService.GetIncompleteItemsAsync();
+            var items=await _moviedataService.GetIncompleteItemsAsync_Movie();
             var model=new MovieDataViewModel(){
                 Movies=items
             };

@@ -22,29 +22,17 @@ namespace MovieBlend.Controllers
         private static Models.Image ImageEntity=new Models.Image();
         static bool isMovie = false;
         private readonly IImageDataService _imageDataservice;
-        private readonly IMovieDataService _moviedataService;
-        private readonly ITvDataService _tvdataService;
+        private readonly IPostDataService _postdataService;
         private readonly UserManager<IdentityUser> _usermanger;
-        public PostController(IImageDataService imageDataservice,IMovieDataService movieDataService,ITvDataService tvDataService,UserManager<IdentityUser>userManager)
+        public PostController(IImageDataService imageDataservice,IPostDataService movieDataService,UserManager<IdentityUser>userManager)
         {
             _imageDataservice=imageDataservice;
-            _moviedataService = movieDataService;
-            _tvdataService = tvDataService;
+            _postdataService = movieDataService;
             _usermanger = userManager;
 
         }
         public IActionResult Cat_select()
         {
-            return View("Cat_select");
-        }
-        public IActionResult Add_entry_movie()
-        {
-            isMovie = true;
-            return View("UploadPic");
-        }
-        public IActionResult Add_entry_TV()
-        {
-            isMovie = false;
             return View("UploadPic");
         }
         [HttpPost]
@@ -73,11 +61,10 @@ namespace MovieBlend.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPost(MovieData dummyData)
         {
-            
-            //HttpFileCollection hfc = HttpContext.Current.Request.Files;
+            if (dummyData.Catagoryx == Catagory.Movie) isMovie = true;
+            else isMovie = false;
             var currentUser = await _usermanger.GetUserAsync(User);
             if (currentUser == null) return Challenge();
-            // HttpPostedFileBase file = Request.Files["ImageData"];
             if (ImageEntity.Id != imageid)
             {
                 Console.WriteLine("WAIT WHAT?" + imageid + " " + ImageEntity.Id);
@@ -102,7 +89,7 @@ namespace MovieBlend.Controllers
                 {
                     return RedirectToAction("Add_entry_movie");
                 }
-                var successful = await _moviedataService.AddMovieDataAsync(newmovie);
+                var successful = await _postdataService.AddPostDataAsync(newmovie);
                 if (!successful)
                 {
                     return BadRequest("Couldnot Post Your Entry");
@@ -117,12 +104,15 @@ namespace MovieBlend.Controllers
                     return RedirectToAction("Add_entry_TV");
                 }
             
-                var successful = await _tvdataService.AddTVDataAsync(newmovie);
+                var successful = await _postdataService.AddPostDataAsync(newmovie);
                 if (!successful)
                 {
                     return BadRequest("Couldnot Post Your Entry");
                 }
-                return RedirectToAction("Cat_select");
+                if (isMovie)
+                    return RedirectToAction("Movie/Index");
+                else
+                    return RedirectToAction("TV/Index");
             }
         }
     }

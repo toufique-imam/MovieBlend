@@ -27,12 +27,18 @@ namespace MovieBlend.Models
         public string Language { get; set; }
         public Catagory Catagoryx { get; set; }
         public string User_name { get; set; }
-        public Guid Cover_pic_id{get;set;}        
+        public Guid Cover_pic_id{get;set;}   
+        //[Required]
+        public Privacy _Privacy{get;set;}     
     
     }
     public enum Catagory{
         Movie,
         Tv
+    }
+    public enum Privacy{
+        Private,
+        Public
     }
     public enum Lang{
         English,

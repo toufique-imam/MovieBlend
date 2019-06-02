@@ -41,7 +41,6 @@ F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Areas
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Movie\Index.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\TV\Index.g.cshtml.cs
-F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Post\cat_select.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Post\post_entry.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Post\post_entry_partial.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\PostDetail\Index.g.cshtml.cs

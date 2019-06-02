@@ -42,10 +42,8 @@ namespace MovieBlend
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddScoped<ITvDataService, TvdataService>();
-            services.AddScoped<IMovieDataService,MoviedataService>();
+            services.AddScoped<IPostDataService, PostdataService>();
             services.AddScoped<IImageDataService,ImagedataService>();
-            //services.AddScoped<ICommentDataService,CommentDataService>();
            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
