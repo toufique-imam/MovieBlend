@@ -6,6 +6,9 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="MyPost" asp-area="" asp-action="Index">@User.Identity.Name's Posts</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link text-dark" asp-controller="Post" asp-area="" asp-action="cat_select">Create</a>
         </li>
         <li class="nav-item">

@@ -27,7 +27,7 @@ namespace MovieBlend.Controllers
             _usermanger = usermanager;
             _postDataService = postData;
         }
-       
+
         public IActionResult Index(string data)
         {
             maindata = new MovieData();

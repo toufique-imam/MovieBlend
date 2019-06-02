@@ -2869,6 +2869,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\MyPost\\Index.cshtml",
+      "TargetPath": "Views\\MyPost\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"

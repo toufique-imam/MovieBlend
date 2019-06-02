@@ -71,7 +71,7 @@ namespace MovieBlend.Controllers
             }
             MovieData newmovie = new MovieData()
             {
-                Postedate=DateTimeOffset.Now,
+                Postedate = DateTimeOffset.Now,
                 Id = Guid.NewGuid(),
                 Title = dummyData.Title,
                 Release = dummyData.Release,
@@ -80,7 +80,8 @@ namespace MovieBlend.Controllers
                 Language = dummyData.Language,
                 PosterId = currentUser.Id,
                 User_name = currentUser.UserName,
-                Cover_pic_id=ImageEntity.Id
+                Cover_pic_id = ImageEntity.Id,
+                _Privacy = dummyData._Privacy
             };
             if (isMovie==true)
             {
@@ -109,10 +110,7 @@ namespace MovieBlend.Controllers
                 {
                     return BadRequest("Couldnot Post Your Entry");
                 }
-                if (isMovie)
-                    return RedirectToAction("Movie/Index");
-                else
-                    return RedirectToAction("TV/Index");
+                return RedirectToAction("Cat_select");
             }
         }
     }

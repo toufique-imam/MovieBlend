@@ -33,7 +33,7 @@ namespace MovieBlend.Services{
         }
         public MovieData Getdatabyid(String id)
         {
-            var xx = _contextMV.PostData.FirstOrDefault(x => x.Catagoryx == Catagory.Movie && x.Id.ToString() == id);
+            var xx = _contextMV.PostData.FirstOrDefault(x => x.Id.ToString() == id);
 
             return xx;
         }

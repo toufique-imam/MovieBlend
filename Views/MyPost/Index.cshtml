@@ -1,0 +1,33 @@
+﻿@model MovieDataViewModel
+@using Humanizer
+@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "MY Posts";
+}
+
+<h1>Index</h1>
+<div class="panel panel-default Movie-panel">
+    <div class="panel-heading">@ViewData["Title"]</div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>PostDate</td>
+                <td>Title</td>
+                <td>Genre</td>
+                <td>Release Date</td>
+                <td>Privacy</td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.Movies)
+        {
+            <tr onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">
+                <td>@item.Postedate.Humanize()</td>
+                <td>@item.Title</td>
+                <td>@item.Genre</td>
+                <td>@item.Release</td>
+                <td>@item._Privacy</td>
+            </tr>
+        }
+    </table>
+</div>
+
