@@ -2804,6 +2804,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Home\\SearchMovie.cshtml",
+      "TargetPath": "Views\\Home\\SearchMovie.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Shared\\_CookieConsentPartial.cshtml",
       "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
       "FileKind": "mvc"
@@ -2851,6 +2856,11 @@
     {
       "FilePath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\SearchTV.cshtml",
+      "TargetPath": "Views\\Home\\SearchTV.cshtml",
       "FileKind": "mvc"
     },
     {

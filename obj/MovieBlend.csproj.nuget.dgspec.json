@@ -90,6 +90,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.6.9, )"
+            },
             "StmlParser": {
               "target": "Package",
               "version": "[1.0.2, )"
