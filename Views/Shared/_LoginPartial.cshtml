@@ -2,31 +2,31 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav flex-lg-grow-0">
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="MyPost" asp-area="" asp-action="Index">@User.Identity.Name's Posts</a>
+            <a class="nav-link text-success" asp-controller="MyPost" asp-area="" asp-action="Index">@User.Identity.Name's Posts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Post" asp-area="" asp-action="cat_select">Create</a>
+            <a class="nav-link text-white-50" asp-controller="Post" asp-area="" asp-action="cat_select">Create</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                <button type="submit" class="nav-link btn btn-link text-danger">Logout</button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-success" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-danger" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
     }
 </ul>

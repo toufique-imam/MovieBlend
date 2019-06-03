@@ -12,7 +12,7 @@ namespace MovieBlend.Models
         public string overview { get; set; }
         public string first_air_date { get; set; }
         public int[] genre_ids { get; set; }
-        public int[] origin_country { get; set; }
+        public string[] origin_country { get; set; }
         public int id { get; set; }
         public string original_name { get; set; }
         public string original_language { get; set; }
@@ -21,5 +21,6 @@ namespace MovieBlend.Models
         public double popularity { get; set; }
         public int vote_count { get; set; }
         public double vote_average { get; set; }
+        public bool isAdded { get; set; }
     }
 }

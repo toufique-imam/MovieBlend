@@ -13,13 +13,7 @@ a.navbar-brand {
 
 html {
     font-size: 14px;
-    height:100%;
-    line-height:1.15;
 }
-*{
-    box-sizing:border-box;
-}
-
 @media (min-width: 768px) {
     html {
         font-size: 16px;
@@ -80,12 +74,11 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    margin:0;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
+    bottom:0;
+    position:fixed;
     width: 100%;
     white-space: nowrap;
     /* Set the fixed height of the footer here */

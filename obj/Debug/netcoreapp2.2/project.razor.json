@@ -2879,11 +2879,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\EditData\\_ConfirmEdit.cshtml",
-      "TargetPath": "Views\\EditData\\_ConfirmEdit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"

@@ -20,5 +20,6 @@ namespace MovieBlend.Models
         public double popularity { get; set; }
         public int vote_count { get; set; }
         public double vote_average { get; set; }
+        public bool isAdded { get; set; }
     }
 }

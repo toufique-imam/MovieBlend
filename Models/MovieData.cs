@@ -8,9 +8,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MovieBlend.Models
 {
-    public class SerachData
+    public class SearchData
     {
         public string data { get; set; }
+        public  Catagory Catagoryx { get; set; }
     }
     public class MovieData
     {
