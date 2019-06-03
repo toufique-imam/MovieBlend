@@ -1,0 +1,77 @@
+﻿@model MovieData
+@{
+    ViewData["Title"] = "Edit Post";
+}
+<h2>Edit @Model.Title blog post</h2>
+
+<div class="align-self-md-auto">
+    <form method="post">
+        <br />
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        <label asp-for="Title">Title</label>
+                    </td>
+                    <td>
+                        <label asp-for="Catagoryx">Catagory</label>
+                    </td>
+                    <td>
+                        <label asp-for="_Privacy">Privacy</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" asp-for="Title" style="" class="form-control" value=@Model.Title />
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.Catagoryx, new SelectList(Enum.GetValues(typeof(Catagory))) as SelectList, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model._Privacy, new SelectList(Enum.GetValues(typeof(Privacy))) as SelectList, new { @class = "form-control" })
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        <label asp-for="Release">Release Date</label>
+                    </td>
+                    <td>
+                        <label asp-for="Language">Language</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" asp-for="Release" style="width:auto" class="form-control" value=@Model.Release />
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.Language, new SelectList(Enum.GetValues(typeof(Lang))) as SelectList, new { @class = "form-control" })
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <br />
+        <hr />
+        <label asp-for="Genre">Genre</label>
+        <input type="text" asp-for="Genre" style="" class="form-control" value=@Model.Genre />
+        <br />
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description" class="form-control" style="height: 300px;" resource=@Model.Description></textarea><br />
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>
+                        <input type="submit" style="width: auto; font-weight: 600;" class="btn btn-outline-primary" value="Edit" asp-action="Update" /><br />
+                    </td>
+                    <td>
+                        <input class="btn btn-danger delete-button" type="submit" style="width: auto; font-weight: 600;" value="Delete" asp-action="Delete" onclick = "return confirm('Are you sure you wish to delete this article?');" /><br />
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </form>
+</div>

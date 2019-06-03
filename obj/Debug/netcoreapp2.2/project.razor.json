@@ -2854,6 +2854,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\EditData\\Index.cshtml",
+      "TargetPath": "Views\\EditData\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Shared\\_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
@@ -2861,6 +2866,11 @@
     {
       "FilePath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\EditData\\_ConfirmEdit.cshtml",
+      "TargetPath": "Views\\EditData\\_ConfirmEdit.cshtml",
       "FileKind": "mvc"
     },
     {

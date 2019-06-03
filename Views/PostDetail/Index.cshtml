@@ -2,11 +2,15 @@
 @{
     ViewData["Title"] = Model.Title;
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
 <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 @using Humanizer
 @using StmlParsing
+@using Newtonsoft.Json
 <style>
     .user_name {
         font-size: 14px;
@@ -88,16 +92,16 @@
     .div-post {
         margin-top: 45px;
     }
-    img{
-        all:inherit;
-        align-content:center;
-        height:380px;
+
+    img {
+        all: inherit;
+        align-content: center;
+        height: 380px;
     }
-    
 </style>
 <div>
     <section class="banner-section">
-        <img src="/PostDetail/ViewImage/@Model.Cover_pic_id"/>
+        <img src="/PostDetail/ViewImage/@Model.Cover_pic_id" />
     </section>
     <section class="post-content-section">
         <div class="container">
@@ -112,6 +116,11 @@
                         <h7 class="poster_name">Posted @Model.Postedate.Humanize()</h7>
                         <br />@Html.Raw(@StmlParser.Parse(Model.Description))
                     </p>
+                    @if (User.Identity.Name.ToString() == Model.User_name)
+                    {
+
+                        <input class="btn btn-danger" value="Edit" onclick="location.href='@Url.Action("Index", "EditData", new { @data = JsonConvert.SerializeObject(Model.Id) })'" />
+                    }
                 </div>
             </div>
         </div>

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Humanizer;
 namespace MovieBlend.Services{
     public class PostdataService : IPostDataService{
-        private readonly ApplicationDbContext _contextMV;
+        private ApplicationDbContext _contextMV;
         public PostdataService(ApplicationDbContext context){
             _contextMV=context;
         }
@@ -31,9 +31,9 @@ namespace MovieBlend.Services{
                 .Where(x=>x._Privacy==Privacy.Private && x.PosterId==id)
                 .ToArrayAsync();
         }
-        public MovieData Getdatabyid(String id)
+        public async Task<MovieData> Getdatabyid(String id)
         {
-            var xx = _contextMV.PostData.FirstOrDefault(x => x.Id.ToString() == id);
+            var xx = await _contextMV.PostData.FirstAsync(x => x.Id.ToString() == id);
 
             return xx;
         }
@@ -51,6 +51,18 @@ namespace MovieBlend.Services{
             return await _contextMV.PostData
                .Where(x => x.PosterId == id)
                .ToArrayAsync();
+        }
+
+        public async Task<bool> UpdateData(MovieData movieData)
+        {
+            _contextMV.PostData.Update(movieData);
+            return await _contextMV.SaveChangesAsync()==1;
+        }
+
+        public async Task<bool> DeleteData(MovieData movieData)
+        {
+            _contextMV.PostData.Remove(movieData);
+            return await _contextMV.SaveChangesAsync() == 1;
         }
     }
 }

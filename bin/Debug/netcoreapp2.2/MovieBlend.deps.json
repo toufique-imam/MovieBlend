@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "004e89d2de425b8fa66c25c82741eebb061eb51f"
+    "signature": "af7044920a4ee1e8bec5b4bb6efb457d0df1ecec"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
       "MovieBlend/1.0.0": {
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
+          "CredentialManagement": "1.0.2",
           "Grpc.Core": "1.21.0",
           "Humanizer": "2.6.2",
           "Microsoft.AspNet.Mvc": "5.2.7",
@@ -67,6 +68,17 @@
         },
         "compile": {
           "lib/netstandard1.3/CoreCompat.System.Drawing.dll": {}
+        }
+      },
+      "CredentialManagement/1.0.2": {
+        "runtime": {
+          "lib/net35/CredentialManagement.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        },
+        "compile": {
+          "lib/net35/CredentialManagement.dll": {}
         }
       },
       "Grpc.Core/1.21.0": {
@@ -4261,6 +4273,13 @@
       "sha512": "sha512-KOBeVy8FHx9zkXrIZAM8OdXPrimROmvfB02fOegrYIelNN/zWhsOwzONgD7gw7wOTJgAFfdwpme5CiMraJj47Q==",
       "path": "corecompat.system.drawing/1.0.0-beta006",
       "hashPath": "corecompat.system.drawing.1.0.0-beta006.nupkg.sha512"
+    },
+    "CredentialManagement/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VkP04/jFXaxT3TkcRhzETYtOrznQxRmQ2J1XJdbXz47Bir7hIzPR7mFZk4GJQ4An4gozW+vonpf+iqTHomAkQw==",
+      "path": "credentialmanagement/1.0.2",
+      "hashPath": "credentialmanagement.1.0.2.nupkg.sha512"
     },
     "Grpc.Core/1.21.0": {
       "type": "package",

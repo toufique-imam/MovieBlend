@@ -23,6 +23,10 @@ namespace MovieBlend.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> Search(string data)
+        {
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

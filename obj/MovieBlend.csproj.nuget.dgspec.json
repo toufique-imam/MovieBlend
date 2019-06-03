@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[1.0.0-beta006, )"
             },
+            "CredentialManagement": {
+              "target": "Package",
+              "version": "[1.0.2, )"
+            },
             "Grpc.Core": {
               "target": "Package",
               "version": "[1.21.0, )"

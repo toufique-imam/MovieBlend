@@ -18,7 +18,7 @@ namespace MovieBlend.Controllers
         //private readonly ICommentDataService _commentdataServices;
         private readonly IPostDataService _postDataService;
         private readonly IImageDataService _imageDataservice;
-        private static MovieData maindata;
+        private static MovieData maindata=new MovieData();
         private readonly UserManager<IdentityUser> _usermanger;
         public PostDetailController(IImageDataService imageDataservice,IPostDataService postData, UserManager<IdentityUser> usermanager)
         {
@@ -28,11 +28,11 @@ namespace MovieBlend.Controllers
             _postDataService = postData;
         }
 
-        public IActionResult Index(string data)
+        public async Task<IActionResult> Index(string data)
         {
-            maindata = new MovieData();
             var datax = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(data);
-            var arr = _postDataService.Getdatabyid(datax);
+            var arr =await _postDataService.Getdatabyid(datax);
+            maindata=arr;
             return View(arr);
         }
         [HttpGet]

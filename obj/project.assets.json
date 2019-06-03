@@ -26,6 +26,15 @@
           "lib/netstandard1.3/CoreCompat.System.Drawing.dll": {}
         }
       },
+      "CredentialManagement/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net35/CredentialManagement.dll": {}
+        },
+        "runtime": {
+          "lib/net35/CredentialManagement.dll": {}
+        }
+      },
       "Grpc.Core/1.21.0": {
         "type": "package",
         "dependencies": {
@@ -5476,6 +5485,18 @@
         "corecompat.system.drawing.nuspec",
         "lib/net45/CoreCompat.System.Drawing.dll",
         "lib/netstandard1.3/CoreCompat.System.Drawing.dll"
+      ]
+    },
+    "CredentialManagement/1.0.2": {
+      "sha512": "VkP04/jFXaxT3TkcRhzETYtOrznQxRmQ2J1XJdbXz47Bir7hIzPR7mFZk4GJQ4An4gozW+vonpf+iqTHomAkQw==",
+      "type": "package",
+      "path": "credentialmanagement/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "credentialmanagement.1.0.2.nupkg.sha512",
+        "credentialmanagement.nuspec",
+        "lib/net35/CredentialManagement.dll"
       ]
     },
     "Grpc.Core/1.21.0": {
@@ -14610,6 +14631,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "CoreCompat.System.Drawing >= 1.0.0-beta006",
+      "CredentialManagement >= 1.0.2",
       "Grpc.Core >= 1.21.0",
       "Humanizer >= 2.6.2",
       "Microsoft.AspNet.Mvc >= 5.2.7",
@@ -14667,6 +14689,10 @@
             "target": "Package",
             "version": "[1.0.0-beta006, )"
           },
+          "CredentialManagement": {
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
           "Grpc.Core": {
             "target": "Package",
             "version": "[1.21.0, )"
@@ -14722,6 +14748,16 @@
     }
   },
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'CredentialManagement 1.0.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.2'. This package may not be fully compatible with your project.",
+      "libraryId": "CredentialManagement",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.2"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",
