@@ -2,35 +2,33 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav flex-lg-grow-0 navbar-collapse collapse">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <li class="nav-item">
-            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-fw fa-user"></i>Hello @User.Identity.Name !</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-success" asp-controller="MyPost" asp-area="" asp-action="Index"><i class="fa fa-fw fa-database"></i>@User.Identity.Name's Posts</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-success" asp-controller="WatchList" asp-area="" asp-action="Index"> <i class="fa fa-fw fa-th-list"></i>WatchList</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white-50" asp-controller="Post" asp-area="" asp-action="cat_select"><i class="fa fa-fw fa-lightbulb-o"></i>Create</a>
-        </li>
+    <ul class="navbar-nav flex-lg-grow-0 navbar-collapse collapse">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link text-light dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><i class="fa fa-fw fa-user"></i>Hello @User.Identity.Name !</a>
+                <div style="background-color:#343a40" class="dropdown-menu" aria-labelledby="navbardropdown">
+                    <a class="dropdown-item text-success" asp-controller="MyPost" asp-area="" asp-action="Index"><i class="fa fa-fw fa-database"></i>@User.Identity.Name's Posts</a>
+                    <a class="dropdown-item text-success" asp-controller="WatchList" asp-area="" asp-action="Index"> <i class="fa fa-fw fa-th-list"></i>WatchList</a>
+                    <a class="dropdown-item text-info-50" asp-controller="Post" asp-area="" asp-action="cat_select"><i class="fa fa-fw fa-lightbulb-o"></i>Create</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="fa fa-fw fa-user"></i>Manage</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-danger"><i class="fa fa-fw fa-power-off"></i>Logout</button>
+                </form>
+            </li>
 
-        <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-danger"><i class="fa fa-fw fa-power-off"></i>Logout</button>
-            </form>
-        </li>
-    }
-    else
-    {
-        <li class="nav-item">
-            <a class="nav-link text-success" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-danger" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-fw fa-sign-in"></i>Login</a>
-        </li>
-    }
-</ul>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-success" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-fw fa-sign-in"></i>Login</a>
+            </li>
+        }
+    </ul>

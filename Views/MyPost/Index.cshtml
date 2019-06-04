@@ -1,34 +1,33 @@
 ﻿@model MovieDataViewModel
-@using Humanizer
 @using Newtonsoft.Json
+@using Humanizer
+@using StmlParsing
 @{
     ViewData["Title"] = "My Posts";
 }
-
-<h2>@ViewData["Title"]</h2>
+<link href="~/css/invert.css" rel="stylesheet" />
 <div class="panel panel-default Movie-panel">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <td>Cover Pic</td>
-                <td>PostDate</td>
-                <td>Title</td>
-                <td>Genre</td>
-                <td>Release Date</td>
-                <td>Privacy</td>
-            </tr>
-        </thead>
+    <div class="panel-heading">@ViewData["Title"]</div>
+    <div class="card-columns">
         @foreach (var item in Model.Movies)
         {
-            <tr onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">
-                <td> <img src="/PostDetail/ViewImage/@item.Cover_pic_id" style="width:50px; height:50px;" /></td>
-                <td>@item.Postedate.Humanize()</td>
-                <td>@item.Title</td>
-                <td>@item.Genre</td>
-                <td>@item.Release</td>
-                <td>@item._Privacy</td>
-            </tr>
-        }
-    </table>
-</div>
 
+            <div class="card text-center">
+                <div class="card-header">
+                    @item.Genre | @item.Language |@item.Release
+                </div>
+                <div class="card-body" style="background:url('/PostDetail/ViewImage/@item.Cover_pic_id')">
+                    <h5 class="card-title text-light" role="textbox" aria-multiline="true">
+                        @item.Title
+                    </h5>
+                    <p class="card-text text-light"> @Html.Raw(@StmlParser.Parse(item.Description))</p>
+                    <a class="btn btn-info" onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">Details</a>
+                </div>
+
+                <div class="card-footer text-muted">
+                    Posted @item.Postedate.Humanize() By @item.User_name
+                </div>
+            </div>
+        }
+    </div>
+</div>

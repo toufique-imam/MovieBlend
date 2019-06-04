@@ -1,32 +1,31 @@
 ﻿@model MovieDataViewModel
 @using Newtonsoft.Json
 @using Humanizer
+@using StmlParsing
 @{
     ViewData["Title"] = "Movie Index";
 }
-
 <div class="panel panel-default Movie-panel">
     <div class="panel-heading">@ViewData["Title"]</div>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <td>Cover Pic</td>
-                <td>Posted Time</td>
-                <td>Title</td>
-                <td>Genre</td>
-                <td>Release Date</td>
-            </tr>
-        </thead>
-        
+    <div class="card-columns">
         @foreach (var item in Model.Movies)
         {
-            <tr onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">
-                <td> <img src="/PostDetail/ViewImage/@item.Cover_pic_id" style="width:50px; height:50px;" /></td>
-                <td>@item.Postedate.Humanize()</td>
-                <td>@item.Title</td>
-                <td>@item.Genre</td>
-                <td>@item.Release</td>
-            </tr>
+            <div class="card text-center">
+                <div class="card-header">
+                    @item.Genre | @item.Language |@item.Release
+                </div>
+                <div class="card-body" style="opacity:0.9; background:url('/PostDetail/ViewImage/@item.Cover_pic_id')">
+                    <h5 class="card-title text-danger">
+                        @item.Title
+                    </h5>
+                    <p class="card-text text-light"> @Html.Raw(@StmlParser.Parse(item.Description))</p>
+                    <a class="btn btn-info" onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">Details</a>
+                </div>
+
+                <div class="card-footer text-muted">
+                    Posted @item.Postedate.Humanize() By @item.User_name
+                </div>
+            </div>
         }
-    </table>
+    </div>
 </div>
