@@ -119,7 +119,7 @@
                     @if (User.Identity.Name.ToString() == Model.User_name)
                     {
 
-                        <input class="btn btn-danger" value="Edit" onclick="location.href='@Url.Action("Index", "EditData", new { @data = JsonConvert.SerializeObject(Model.Id) })'" />
+                        <button class="btn btn-danger" onclick="location.href='@Url.Action("Index", "EditData", new { @data = JsonConvert.SerializeObject(Model.Id) })'"><i class="fa fa-fw fa-edit"></i>Edit</button>
                     }
                 </div>
             </div>

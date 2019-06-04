@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Your WatchList";
 }
-
-<h1>Search Results</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h1>WatchList</h1>
 
 <div>
     <table class="table table-hover">
@@ -46,7 +46,7 @@
                 }
                 <td>@item.original_language</td>
                 <td>
-                    <input class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteWatch", "WatchList", new { @data = JsonConvert.SerializeObject(item.id) })'" />
+                    <button class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteWatch", "WatchList", new { @data = JsonConvert.SerializeObject(item.id) })'"><i class="fa fa-fw fa-minus-circle"></i>Del</button>
                 </td>
             </tr>
         }

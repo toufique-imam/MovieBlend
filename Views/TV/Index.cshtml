@@ -9,6 +9,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
+                <td>Cover Pic</td>
                 <td>PostDate</td>
                 <td>Title</td>
                 <td>Genre</td>
@@ -18,6 +19,7 @@
         @foreach (var item in Model.Movies)
         {
             <tr onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">
+                <td> <img src="/PostDetail/ViewImage/@item.Cover_pic_id" style="width:50px; height:50px;"/></td>
                 <td>@item.Postedate.Humanize()</td>
                 <td>@item.Title</td>
                 <td>@item.Genre</td>

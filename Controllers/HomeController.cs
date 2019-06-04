@@ -59,6 +59,7 @@ namespace MovieBlend.Controllers
             }
             return null;
         }
+        
         public async Task<IActionResult> Search(SearchData sd)
         {
             if (sd == null || sd.data.Length == 0) return RedirectToAction("Index", "Home");

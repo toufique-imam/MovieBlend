@@ -2,15 +2,15 @@
 @using Humanizer
 @using Newtonsoft.Json
 @{
-    ViewData["Title"] = "MY Posts";
+    ViewData["Title"] = "My Posts";
 }
 
-<h1>Index</h1>
+<h2>@ViewData["Title"]</h2>
 <div class="panel panel-default Movie-panel">
-    <div class="panel-heading">@ViewData["Title"]</div>
     <table class="table table-hover">
         <thead>
             <tr>
+                <td>Cover Pic</td>
                 <td>PostDate</td>
                 <td>Title</td>
                 <td>Genre</td>
@@ -21,6 +21,7 @@
         @foreach (var item in Model.Movies)
         {
             <tr onclick="location.href='@Url.Action("Index","PostDetail",new { @data=JsonConvert.SerializeObject(item.Id)})'">
+                <td> <img src="/PostDetail/ViewImage/@item.Cover_pic_id" style="width:50px; height:50px;" /></td>
                 <td>@item.Postedate.Humanize()</td>
                 <td>@item.Title</td>
                 <td>@item.Genre</td>

@@ -8,15 +8,15 @@
                     <label asp-for="Title">Title</label>
                 </td>
                 <td>
-                    <label asp-for="Catagoryx">Catagory</label>
+                    <label asp-for="Catagoryx"><i class="fa fa-fw fa-object-group"></i>Catagory</label>
                 </td>
                 <td>
-                    <label asp-for="_Privacy">Privacy</label>
+                    <label asp-for="_Privacy"><i class="fa fa-fw fa-lock"></i>Privacy</label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="text" asp-for="Title" style="" class="form-control" placeholder="Title.." />
+                    <input type="text" asp-for="Title" style="" class="form-control" placeholder="Title.." required/>
                 </td>
                 <td>
                     @Html.DropDownListFor(model => model.Catagoryx,new SelectList(Enum.GetValues(typeof(Catagory))) as SelectList,  new { @class = "form-control"} )  
@@ -31,15 +31,16 @@
         <thead>
             <tr>
                 <td>
-                    <label asp-for="Release">Release Date</label>
+                    <label asp-for="Release"><i class="fa fa-fw fa-calendar"></i>Release Date</label>
                 </td>
                 <td>
-                    <label asp-for="Language">Language</label>
+                    
+                    <label asp-for="Language"><i class="fa fa-fw fa-language"></i>Language</label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input type="text" asp-for="Release" style="width:auto" class="form-control" placeholder="Release Date Add A time picker" />
+                    <input type="text" asp-for="Release" style="width:auto" class="form-control" placeholder="Release Date Add A time picker" required/>
                 </td>
                 <td>
                     @Html.DropDownListFor(model => model.Language,new SelectList(Enum.GetValues(typeof(Lang))) as SelectList,  new { @class = "form-control"} )  
@@ -49,10 +50,10 @@
     </table>
     <br />
     <hr />
-    <label asp-for="Genre">Genre</label>
-    <input type="text" asp-for="Genre" style="" class="form-control" placeholder="Separate each genre using a comma ','." />
+    <label asp-for="Genre"><i class="fa fa-fw fa-tags"></i>Genre</label>
+    <input type="text" asp-for="Genre" style="" class="form-control" placeholder="Separate each genre using a comma ','." required/>
     <br />
-    <label asp-for="Description">Description</label>
-    <textarea asp-for="Description" class="form-control" style="height: 300px;" placeholder="What would you like to write?"></textarea><br />
-    <input type="submit" style="width: auto; font-weight: 600;" class="btn btn-outline-primary" value="Post" /><br />
+    <label asp-for="Description"><i class="fa fa-fw fa-pencil"></i>Description</label>
+    <textarea asp-for="Description" class="form-control" style="height: 300px;" placeholder="What would you like to write? Supports Raw HTML and BB Code" required></textarea><br />
+    <button type="submit" class="btn btn-outline-primary"><i class="fa fa-fw fa-upload"></i>Post</button><br />
 </form>

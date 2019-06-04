@@ -3,38 +3,15 @@
 @{
     ViewData["Title"] = "Search";
 }
-
-<h1>Search Results</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h2>Search Results</h2>
 
 <div>
-    <h4>ACDArray</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.page)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.page)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.total_results)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.total_results)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.total_pages)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.total_pages)
-        </dd>
-    </dl>
     <table class="table table-hover">
         <thead>
             <tr>
                 <td>Cover Photo</td>
                 <td>Title</td>
-                <td>Popularity</td>
                 <td>Vote Count</td>
                 <td>Vote Avg.</td>
                 <td>Release/First Aired</td>
@@ -55,7 +32,6 @@
                 {
                     <td>@item.name</td>
                 }
-                <td>@item.popularity</td>
                 <td>@item.vote_count</td>
                 <td>@item.vote_average</td>
                 @if (!item.isMovie)
@@ -70,11 +46,13 @@
                 <td>
                     @if (item.isAdded)
                     {
-                        <input class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteWatch", "Home", new { @data = JsonConvert.SerializeObject(item.id) })'" />
+                        
+                        <button class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteWatch", "Home", new { @data = JsonConvert.SerializeObject(item.id) })'"><i class="fa fa-fw fa-minus-circle"></i>Del</button>
                     }
                     @if (!item.isAdded)
                     {
-                        <input class="btn btn-success" value="Add" onclick="location.href='@Url.Action("AddWatch", "Home", new { @data = JsonConvert.SerializeObject(item.id) })'" />
+                        
+                        <button class="btn btn-success" value="Add" onclick="location.href='@Url.Action("AddWatch", "Home", new { @data = JsonConvert.SerializeObject(item.id) })'"><i class="fa fa-fw fa-check-circle"></i>Add</button>
                     }
                 </td>
             </tr>

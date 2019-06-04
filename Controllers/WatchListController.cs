@@ -35,7 +35,7 @@ namespace MovieBlend.Controllers
             }
             return View(viewdata);
         }
-   
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteWatch(string data)
         {
             var currentuser = await _Usermanger.GetUserAsync(User);

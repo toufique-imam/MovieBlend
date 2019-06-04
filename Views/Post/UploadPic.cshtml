@@ -1,5 +1,8 @@
-
-<form action="/Post/UploadImage" enctype="multipart/form-data" method="post">
-    <input type="file" name="files" />
-    <button>post</button>
-</form>
+<div style="position:center; margin:300px auto auto 300px">
+    <label class="text-capitalize text-info" style="font-size:large"><i class="fa fa-fw fa-info-circle"></i>Upload A Cover Photo</label>
+    <form action="/Post/UploadImage" enctype="multipart/form-data" method="post">
+        <i class="fa fa-fw fa-camera"></i>
+        <input type="file" name="files" required class="btn btn-outline-dark" />
+        <button class="btn btn-dark"><i class="fa fa-fw fa-level-up"></i>post</button>
+    </form>
+</div>

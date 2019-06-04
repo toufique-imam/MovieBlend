@@ -1,16 +1,14 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+/* Sticky footer styles
+-------------------------------------------------- */
 a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
 }
-
-
-/* Sticky footer styles
--------------------------------------------------- */
-
 html {
     font-size: 14px;
 }
@@ -24,11 +22,6 @@ div.todo-panel {
     margin-top: 15px;
 }
 
-table tr.done {
-    text-decoration: line-through;
-    color: #888;
-}
-
 .border-top {
     border-top: 1px solid #e5e5e5;
 }
@@ -40,11 +33,7 @@ table tr.done {
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -78,7 +67,7 @@ body {
 
 .footer {
     bottom:0;
-    position:fixed;
+    position:absolute;
     width: 100%;
     white-space: nowrap;
     /* Set the fixed height of the footer here */

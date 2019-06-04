@@ -14,10 +14,10 @@
                         <label asp-for="Title">Title</label>
                     </td>
                     <td>
-                        <label asp-for="Catagoryx">Catagory</label>
+                        <label asp-for="Catagoryx"><i class="fa fa-fw fa-object-group"></i>Catagory</label>
                     </td>
                     <td>
-                        <label asp-for="_Privacy">Privacy</label>
+                        <label asp-for="_Privacy"><i class="fa fa-fw fa-lock"></i>Privacy</label>
                     </td>
                 </tr>
                 <tr>
@@ -37,10 +37,10 @@
             <thead>
                 <tr>
                     <td>
-                        <label asp-for="Release">Release Date</label>
+                        <label asp-for="Release"><i class="fa fa-fw fa-calendar"></i>Release Date</label>
                     </td>
                     <td>
-                        <label asp-for="Language">Language</label>
+                        <label asp-for="Language"><i class="fa fa-fw fa-language"></i>Language</label>
                     </td>
                 </tr>
                 <tr>
@@ -55,20 +55,21 @@
         </table>
         <br />
         <hr />
-        <label asp-for="Genre">Genre</label>
+        <label asp-for="Genre"><i class="fa fa-fw fa-tags"></i>Genre</label>
         <input type="text" asp-for="Genre" style="" class="form-control" value=@Model.Genre />
         <br />
-        <label asp-for="Description">Description</label>
+        <label asp-for="Description"><i class="fa fa-fw fa-pencil"></i>Description</label>
         <textarea asp-for="Description" class="form-control" style="height: 300px;" resource=@Model.Description></textarea><br />
 
         <table class="table table-hover">
             <thead>
                 <tr>
                     <td>
-                        <input type="submit" style="width: auto; font-weight: 600;" class="btn btn-outline-primary" value="Edit" asp-action="Update" /><br />
+                        
+                        <button type="submit" style="width: auto; font-weight: 600;" class="btn btn-outline-primary" asp-action="Update" ><i class="fa fa-fw fa-save"></i>Edit</button><br />
                     </td>
                     <td>
-                        <input class="btn btn-danger delete-button" type="submit" style="width: auto; font-weight: 600;" value="Delete" asp-action="Delete" onclick = "return confirm('Are you sure you wish to delete this article?');" /><br />
+                        <button class="btn btn-danger delete-button" type="submit" style="width: auto; font-weight: 600;" asp-action="Delete" onclick = "return confirm('Are you sure you wish to delete this article?');"><i class="fa fa-fw fa-trash"></i>Delete</button><br />
                     </td>
                 </tr>
             </thead>
