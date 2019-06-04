@@ -45,6 +45,7 @@ namespace MovieBlend
             services.AddScoped<IPostDataService, PostdataService>();
             services.AddScoped<IImageDataService,ImagedataService>();
             services.AddScoped<IWatchListService, WatchListService>();
+            services.AddScoped<IApiDataService, ApiDataService>();
            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

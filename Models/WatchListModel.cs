@@ -14,5 +14,7 @@ namespace MovieBlend.Models
         public string movieId { get; set; }
         [Required]
         public string userId { get; set; }
+        [Required]
+        public bool isMovie { get; set; }
     }
 }

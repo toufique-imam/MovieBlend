@@ -2869,6 +2869,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Home\\Search.cshtml",
+      "TargetPath": "Views\\Home\\Search.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\WatchList\\Index.cshtml",
+      "TargetPath": "Views\\WatchList\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Shared\\_LoginPartial.cshtml",
       "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"

@@ -2,18 +2,23 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav flex-lg-grow-0">
+<ul class="navbar-nav flex-lg-grow-0 navbar-collapse collapse">
     @if (SignInManager.IsSignedIn(User))
     {
+    
+        <li class="nav-item">
+            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name !</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link text-success" asp-controller="MyPost" asp-area="" asp-action="Index">@User.Identity.Name's Posts</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white-50" asp-controller="Post" asp-area="" asp-action="cat_select">Create</a>
+            <a class="nav-link text-success" asp-controller="WatchList" asp-area="" asp-action="Index"> WatchList</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            <a class="nav-link text-white-50" asp-controller="Post" asp-area="" asp-action="cat_select">Create</a>
         </li>
+
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-danger">Logout</button>

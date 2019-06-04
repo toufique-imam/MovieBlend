@@ -1,13 +1,13 @@
 ﻿@model MovieBlend.Models.ACDarray
 @using Newtonsoft.Json
 @{
-    ViewData["Title"] = "SearchMovie";
+    ViewData["Title"] = "Search";
 }
 
-<h1>SearchMovie</h1>
+<h1>Search Results</h1>
 
 <div>
-    <h4>JMDArray</h4>
+    <h4>ACDArray</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -37,7 +37,7 @@
                 <td>Popularity</td>
                 <td>Vote Count</td>
                 <td>Vote Avg.</td>
-                <td>Release date</td>
+                <td>Release/First Aired</td>
                 <td>Language</td>
                 <td>WatchList</td>
             </tr>
@@ -46,27 +46,40 @@
         @foreach (var item in Model.results)
         {
             <tr>
-                <td><img style="width:50px; height:50px;" src=@item.poster_path /></td>
-                <td>@item.title</td>
+                <td><img style="width:50px; height:50px;" src=@item.poster_path></td>
+                @if (item.isMovie)
+                {
+                    <td>@item.title</td>
+                }
+                @if (!item.isMovie)
+                {
+                    <td>@item.name</td>
+                }
                 <td>@item.popularity</td>
                 <td>@item.vote_count</td>
                 <td>@item.vote_average</td>
-                <td>@item.release_date</td>
+                @if (!item.isMovie)
+                {
+                    <td>@item.first_air_date</td>
+                }
+                @if (item.isMovie)
+                {
+                    <td>@item.release_date</td>
+                }
                 <td>@item.original_language</td>
                 <td>
                     @if (item.isAdded)
                     {
-                        <input class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete_from_WatchList", "Home", new { @data = JsonConvert.SerializeObject(@item.id) })'" />
+                        <input class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteWatch", "Home", new { @data = JsonConvert.SerializeObject(item.id) })'" />
                     }
                     @if (!item.isAdded)
                     {
-                        <input class="btn btn-success" value="Add" onclick="location.href='@Url.Action("Add_to_WatchList", "Home", new { @data = JsonConvert.SerializeObject(@item.id) })'" />
+                        <input class="btn btn-success" value="Add" onclick="location.href='@Url.Action("AddWatch", "Home", new { @data = JsonConvert.SerializeObject(item.id) })'" />
                     }
                 </td>
             </tr>
         }
     </table>
-
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

@@ -16,5 +16,7 @@ namespace MovieBlend.Data
         //public DbSet<Comment> Comments{get;set;}
         public virtual DbSet<Image> Images { get; set; }
         public DbSet<WatchListModel> WatchLists { get; set; }
+        public DbSet<ApiCommonData> ApiData { get; set; }
+        
     }
 }

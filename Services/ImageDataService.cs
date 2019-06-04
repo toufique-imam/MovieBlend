@@ -38,15 +38,9 @@ namespace MovieBlend.Services
         public async Task<Image> GetDataByIdAsync(Guid id)
         {
            
-            var xx = await _contextimg.Images.Where(x => x.Id == id).ToArrayAsync();
-            if (xx.Length == 0)
-            {
-                return Getdatabyid(id);
-            }
-            else
-            {
-                return xx[0];
-            }
+            var xx = await _contextimg.Images.FirstAsync(x=>x.Id==id);
+            return xx;
+        
         }
     }
 }

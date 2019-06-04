@@ -49,3 +49,5 @@ F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\EditData\Index.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Home\SearchMovie.g.cshtml.cs
 F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Home\SearchTV.g.cshtml.cs
+F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\Home\Search.g.cshtml.cs
+F:\ASP.core Project\Final Project\MovieBlend\obj\Debug\netcoreapp2.2\Razor\Views\WatchList\Index.g.cshtml.cs

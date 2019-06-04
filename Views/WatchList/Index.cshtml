@@ -1,0 +1,58 @@
+@model List<ApiCommonData>
+@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "Your WatchList";
+}
+
+<h1>Search Results</h1>
+
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Cover Photo</td>
+                <td>Title</td>
+                <td>Popularity</td>
+                <td>Vote Count</td>
+                <td>Vote Avg.</td>
+                <td>Release/First Aired</td>
+                <td>Language</td>
+                <td>WatchList</td>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img style="width:50px; height:50px;" src=@item.poster_path></td>
+                @if (item.isMovie)
+                {
+                    <td>@item.title</td>
+                }
+                @if (!item.isMovie)
+                {
+                    <td>@item.name</td>
+                }
+                <td>@item.popularity</td>
+                <td>@item.vote_count</td>
+                <td>@item.vote_average</td>
+                @if (!item.isMovie)
+                {
+                    <td>@item.first_air_date</td>
+                }
+                @if (item.isMovie)
+                {
+                    <td>@item.release_date</td>
+                }
+                <td>@item.original_language</td>
+                <td>
+                    <input class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteWatch", "WatchList", new { @data = JsonConvert.SerializeObject(item.id) })'" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
